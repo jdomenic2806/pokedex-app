@@ -1,0 +1,24 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+html, body {
+    height: 100vh;
+    width: 100vw;
+}
+.backgroundPokemons {
+    background-image: linear-gradient(to bottom, #f2f4ff, #f4f6ff, #f6f8ff, #f9faff, #fbfcff);
+}
+
+.backgroundSidebar {
+    background-color: $purple;
+    height: 100vh;
+}
+
+.btn-logout{
+    padding: 20px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 0px;
+    width: 100%;
+    color: white;
+}
