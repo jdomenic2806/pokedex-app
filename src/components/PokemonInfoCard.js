@@ -45,14 +45,10 @@ export const PokemonInfoCard = (props) => {
           <h6 className="card-title">Shiny</h6>
           <div className="card-body d-flex">
             <LazyLoadImage
-              height={50}
-              width={50}
               visibleByDefault={false}
               src={props.pokemon.sprites.front_shiny}
             />
             <LazyLoadImage
-              height={50}
-              width={50}
               visibleByDefault={false}
               src={props.pokemon.sprites.back_shiny}
             />

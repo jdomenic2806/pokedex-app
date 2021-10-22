@@ -3,26 +3,24 @@ import { Sidebar } from './layout/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PokemonsPage } from './pages/PokemonsPage';
 import { SearchHeader } from './layout/SearchHeader';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   getPokemonData,
-  getPokemons,
-  searchPokemon,
+  getPokemons
 } from './api/PokeApiService';
 import { setPokemons } from './actions/pokemons';
 import { DetailsPokemonPage } from './pages/DetailsPokemonPage';
 import { Loading } from './components/Loading';
+import { SidebarMobile } from './layout/SidebarMobile';
 export const PokedexApp = () => {
 
-  const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch();
-  const pokemones = useSelector(state => state.pokemones)
 
   const fetchPokemons = async () => {
     try {
       //   setLoading(true);
-      const data = await getPokemons(800, 25 * page);
+      const data = await getPokemons(800, 0);
       const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
@@ -41,13 +39,13 @@ export const PokedexApp = () => {
     <Router>
       <div className='container-fluid'>
         <div className='row'>
-          <div className="sticky-top d-none d-sm-block d-sm-none d-md-block">
-
-          <div className='col-2 backgroundSidebar pb-5 pt-5 d-flex align-content-between flex-wrap' >
+          <div className='col-lg-2 col-md-2 d-none d-sm-none d-lg-block backgroundSidebar pb-5 pt-5 d-flex align-content-between flex-wrap sticky-top'>
             <Sidebar />
           </div>
+          <div className="col-sm-12 col-xs-12 d-lg-none d-lg-block d-sm-block d-md-block">
+            <SidebarMobile />
           </div>
-          <div className='col-sm-12 col-xs-12 col-md-10 col-lg-10 backgroundPokemons'>
+          <div className='col-lg-10 col-md-12 col-sm-12 col-xs-12 backgroundPokemons'>
             <div className="container-fluid pb-4">
               <SearchHeader />
             </div>

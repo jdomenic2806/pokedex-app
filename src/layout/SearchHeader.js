@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 export const SearchHeader = () => {
-  const [isHome, setIsHome] = useState(false);
   return (
     <div className="row pt-5">
-      <div className="col-7"></div>
-      <div className="col-5">
+      <div className="col-sm-12 col-xs-12 col-md-7 col-lg-7"></div>
+      <div className="col-sm-12 col-xs-12 col-md-5 col-lg-5">
         <div className="input-group">
           <input
             type="text"
