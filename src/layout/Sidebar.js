@@ -9,8 +9,8 @@ export const Sidebar = () => {
         <img
           src='/assets/logo.png'
           className='img-fluid pointer'
-          width='100'
-          height='100'
+          width='150'
+          height='150'
           alt='Logo'
         />
       </div>
@@ -20,8 +20,8 @@ export const Sidebar = () => {
             <img
               src='/assets/avatar.png'
               className='rounded-circle img-fluid'
-              width='250'
-              height='250'
+              width='180'
+              height='180'
               alt='Avatar'
             />
           </div>

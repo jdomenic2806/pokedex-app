@@ -9,7 +9,7 @@ export const pokemonsReducer = ( state = initialState , action ) => {
         case types.SET_POKEMONES:
             return {
                 ...state,
-                pokemones: action.payload 
+                pokemones: state.pokemones.concat(action.payload)
             }
         default:
             return state;

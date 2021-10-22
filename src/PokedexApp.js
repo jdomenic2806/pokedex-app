@@ -4,30 +4,28 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PokemonsPage } from './pages/PokemonsPage';
 import { SearchHeader } from './layout/SearchHeader';
 import { useDispatch } from 'react-redux';
-import {
-  getPokemonData,
-  getPokemons
-} from './api/PokeApiService';
+import { getPokemonData, getPokemons } from './api/PokeApiService';
 import { setPokemons } from './actions/pokemons';
 import { DetailsPokemonPage } from './pages/DetailsPokemonPage';
 import { Loading } from './components/Loading';
 import { SidebarMobile } from './layout/SidebarMobile';
 export const PokedexApp = () => {
-
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [loadMore, setLoadMore] = useState(
+    'https://pokeapi.co/api/v2/pokemon?limit=21'
+  );
   const dispatch = useDispatch();
 
   const fetchPokemons = async () => {
     try {
-      //   setLoading(true);
-      const data = await getPokemons(800, 0);
+      const data = await getPokemons(loadMore);
       const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url);
       });
       const results = await Promise.all(promises);
-      //   setPokemons(results);
       dispatch(setPokemons(results));
-      setLoading(false)
+      setLoadMore(data.next);
+      setLoading(false);
     } catch (err) {}
   };
 
@@ -42,25 +40,39 @@ export const PokedexApp = () => {
           <div className='col-lg-2 col-md-2 d-none d-sm-none d-lg-block backgroundSidebar pb-5 pt-5 d-flex align-content-between flex-wrap sticky-top'>
             <Sidebar />
           </div>
-          <div className="col-sm-12 col-xs-12 d-lg-none d-lg-block d-sm-block d-md-block">
+          <div className='col-sm-12 col-xs-12 d-lg-none d-lg-block d-sm-block d-md-block'>
             <SidebarMobile />
           </div>
           <div className='col-lg-10 col-md-12 col-sm-12 col-xs-12 backgroundPokemons'>
-            <div className="container-fluid pb-4">
+            <div className='container-fluid pb-4'>
               <SearchHeader />
             </div>
             <Switch>
               <Route path='/' exact>
-                <div className="container-fluid">
-                  {
-                    loading 
-                      ? <Loading />
-                      : <PokemonsPage />
-                  }
-                </div>  
+                <div className='container-fluid'>
+                  {loading ? (
+                    <Loading />
+                  ) : (
+                    <>
+                      <PokemonsPage />
+                      <div className='container'>
+                        <div className='row'>
+                          <div className='col-12 text-center'>
+                            <button
+                              className='btn btn-lg btnLoadMore'
+                              onClick={() => fetchPokemons()}
+                            >
+                              Load More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </Route>
               <Route path='/detail/:name' exact>
-                  <DetailsPokemonPage />
+                <DetailsPokemonPage />
               </Route>
             </Switch>
           </div>

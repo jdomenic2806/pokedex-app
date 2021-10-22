@@ -132,3 +132,16 @@ html, body {
     height: 10vh;
     background-color: $purple;
 }
+
+.spinner-border {
+    width: 100px; 
+    height: 100px;
+}
+
+.btnLoadMore{
+    background-color: $purple;
+    color: white;
+    &:hover{
+        color: white;
+    }
+}

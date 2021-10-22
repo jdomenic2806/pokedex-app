@@ -44,11 +44,16 @@ export const PokemonCard = (props) => {
               </h5>
             </div>
           )}
+          <div class="text-center">
           <LazyLoadImage
-            className='card-img-top'
+            className="text-center"
             visibleByDefault={false}
-            src={props.pokemon.sprites.front_default}
+            width={200}
+            height={200}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${props.pokemon.id}.png`}
           />
+
+          </div>
           {isHome && (
             <div className='card-body text-center'>
               {props.pokemon.types.map((type) => {
