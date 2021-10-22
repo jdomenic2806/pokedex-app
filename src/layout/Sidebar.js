@@ -1,67 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setPokemons } from '../actions/pokemons';
-import {
-  getPokemonData,
-  getPokemons,
-  searchPokemon,
-} from '../api/PokeApiService';
+import React from 'react';
+import { useHistory } from "react-router-dom";
 
 export const Sidebar = () => {
-  const [page, setPage] = useState(0);
-  const dispatch = useDispatch();
-
-  const fetchPokemons = async () => {
-    try {
-      //   setLoading(true);
-      const data = await getPokemons(50, 25 * page);
-      const promises = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.url);
-      });
-      const results = await Promise.all(promises);
-      //   setPokemons(results);
-      dispatch(setPokemons(results));
-      console.log(results);
-    } catch (err) {}
-  };
-
-  useEffect(() => {
-    fetchPokemons();
-  }, []);
-
+  let history = useHistory();
   return (
     <>
-      <div className='col-12 d-flex justify-content-center'>
+      <div className='col-12 d-flex justify-content-center' onClick={() => history.push("/")}>
         <img
           src='/assets/logo.png'
-          class='img-fluid'
-          width='200'
-          height='200'
+          className='img-fluid pointer'
+          width='100'
+          height='100'
           alt='Logo'
         />
       </div>
       <div className='col-12 d-flex justify-content-center'>
         <div className='row'>
-          <div className='col-12'>
+          <div className='col-12 pb-4 d-flex justify-content-center'>
             <img
               src='/assets/avatar.png'
-              class='rounded-circle img-fluid'
-              width='200'
-              height='200'
+              className='rounded-circle img-fluid'
+              width='150'
+              height='150'
               alt='Avatar'
-            ></img>
+            />
           </div>
-          <div className='col-12'>
-            <h2>ASHK123</h2>
+          <div className='col-12 d-flex justify-content-center'>
+            <h3 className="txtColorNameSidebar">ASHK123</h3>
+          </div>
+          <div className='col-12 d-flex justify-content-center'>
+            <h4 className="txtColorLevelSidebar">Level 1</h4>
           </div>
         </div>
       </div>
       <div className='col-12 d-flex justify-content-center'></div>
-      <div className='col-12 d-flex justify-content-center'>
-        <h3>Level 1</h3>
-      </div>
       <div className='col-12'>
-        <button type='button' class='btn btn-logout d-flex'>
+        <button type='button' className='btn btn-logout d-flex btn-sm'>
           <div className='col-4'>
             <img className='svgLogout' src='/assets/Icons/Logout.svg' />
           </div>

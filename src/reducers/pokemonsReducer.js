@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = {
-    pokemons: []
+    pokemones: []
 }
 
 export const pokemonsReducer = ( state = initialState , action ) => {
@@ -9,7 +9,7 @@ export const pokemonsReducer = ( state = initialState , action ) => {
         case types.SET_POKEMONES:
             return {
                 ...state,
-                pokemons: action.payload 
+                pokemones: action.payload 
             }
         default:
             return state;

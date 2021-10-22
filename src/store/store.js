@@ -2,7 +2,7 @@ import { combineReducers, createStore } from "redux";
 import { pokemonsReducer } from "../reducers/pokemonsReducer";
 
 const reducers = combineReducers({
-    pokemons: pokemonsReducer
+    pokemones: pokemonsReducer
 })
 
 export const store = createStore(
