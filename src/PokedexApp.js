@@ -40,7 +40,7 @@ export const PokedexApp = () => {
           <div className='col-lg-2 col-md-2 d-none d-sm-none d-lg-block backgroundSidebar pb-5 pt-5 d-flex align-content-between flex-wrap sticky-top'>
             <Sidebar />
           </div>
-          <div className='col-sm-12 col-xs-12 d-lg-none d-lg-block d-sm-block d-md-block'>
+          <div className='col-sm-12 col-xs-12 d-lg-none d-lg-block d-sm-block d-md-block menu-mobile'>
             <SidebarMobile />
           </div>
           <div className='col-lg-10 col-md-12 col-sm-12 col-xs-12 backgroundPokemons'>

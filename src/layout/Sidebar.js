@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 export const Sidebar = () => {
   let history = useHistory();
   return (
-    <div className="row  justify-content-between">
+    <div className="row justify-content-between ">
       <div style={{ marginBottom: '20%' }} className='col-12 d-flex justify-content-center' onClick={() => history.push("/")}>
         <img
           src='/assets/logo.png'

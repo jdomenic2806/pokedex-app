@@ -1,47 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Drawer, Button } from 'antd';
 import { Sidebar } from './Sidebar';
-import { useHistory } from "react-router-dom";
 
 export const SidebarMobile = () => {
-
-  let history = useHistory();
-  const openNav = () => {
-    document.getElementById('mySidebar').style.width = '250px';
-    document.getElementById('main').style.marginLeft = '250px';
-    console.log('open')
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
   };
-  const closeNav = () => {
-    document.getElementById('mySidebar').style.width = '0px';
-    document.getElementById('mySidebar').style.padding = '0px';
-    document.getElementById('main').style.marginLeft = '0px';
+  const onClose = () => {
+    setVisible(false);
   };
-
   return (
-    <>
-      <div id='mySidebar' className='sidebar'>
-        <a href='javascript:void(0)' className='closebtn' onClick={closeNav}>
-          ×
-        </a>
-        <Sidebar />
-      </div>
-      <div className='row menu-mobile align-items-center text-center ' id="main">
+    <div className='container'>
+      <div className='row align-items-center'>
         <div className='col-4'>
-          <button className='openbtn' onClick={openNav}>
-            ☰
+          <button className="btn btnMenu" onClick={showDrawer}>
+            <img
+              src='/assets/Icons/Menu.svg'
+              alt='Logo'
+            />
           </button>
+          <Drawer
+            placement='left'
+            onClose={onClose}
+            visible={visible}
+          >
+           <Sidebar />
+          </Drawer>
         </div>
         <div className='col-4'>
           <img
             src='/assets/logo.png'
             className='img-fluid pointer'
-            width='100'
-            height='100'
+            width='150'
+            height='150'
             alt='Logo'
-            onClick={() => history.push("/")}
           />
         </div>
         <div className='col-4'></div>
       </div>
-    </>
+    </div>
   );
 };
