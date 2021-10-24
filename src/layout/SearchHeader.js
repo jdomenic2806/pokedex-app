@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
 
 export const SearchHeader = () => {
@@ -8,6 +8,12 @@ export const SearchHeader = () => {
   const handleSearch = (event) => {
     setSearch(event.target.value.toLowerCase());
   };
+
+  const searchPokemon = () => {
+    history.push('/detail/' + search)
+    setSearch('');
+  }
+  
 
   return (
     <div className="row pt-5">
@@ -21,8 +27,9 @@ export const SearchHeader = () => {
               name=""
               placeholder="Search... "
               onChange={handleSearch}
+              value={search}
             />
-            <a href="#" className="search_icon" onClick={() => history.push('/detail/' + search)}>
+            <a href="#" className="search_icon" onClick={searchPokemon}>
               <img src="/assets/Icons/Search.svg" />
             </a>
           </div>

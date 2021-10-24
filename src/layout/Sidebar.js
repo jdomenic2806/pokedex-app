@@ -20,8 +20,8 @@ export const Sidebar = () => {
             <img
               src='/assets/avatar.png'
               className='rounded-circle img-fluid'
-              width='180'
-              height='180'
+              width='150'
+              height='150'
               alt='Avatar'
             />
           </div>
