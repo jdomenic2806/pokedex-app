@@ -6,8 +6,7 @@ Listado de pokemons en react usando la api de pokeapi  https://pokeapi.co/docs/v
 React, Redux, sass, bootstrap, Netlify, react-router-dom, react-lazy-load-image-component, fetch, Ant Design, InfiniteScroll
 
 ## Project Status
-Falto agregar la funcionalidad de busqueda
-Y falto agregarle pruebas unitarias
+Falto agregar unit test
 
 ## Netlify url:
 https://pokedex-app-jadd.netlify.app/
