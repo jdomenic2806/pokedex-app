@@ -2,7 +2,7 @@
 Pokedex in React
 
 Listado de pokemons en react usando la api de pokeapi  https://pokeapi.co/docs/v2
-###Herramientas usadas: 
+### Herramientas usadas: 
 React, Redux, sass, bootstrap, Netlify, react-router-dom, react-lazy-load-image-component, fetch
 
 ## Project Status

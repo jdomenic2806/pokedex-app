@@ -9,11 +9,14 @@ import { setPokemons } from './actions/pokemons';
 import { DetailsPokemonPage } from './pages/DetailsPokemonPage';
 import { Loading } from './components/Loading';
 import { SidebarMobile } from './layout/SidebarMobile';
+import { useSelector } from 'react-redux';
+import InfiniteScroll from "react-infinite-scroll-component";
 export const PokedexApp = () => {
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(
     'https://pokeapi.co/api/v2/pokemon?limit=21'
   );
+  const pokemones = useSelector((state) => state.pokemones.pokemones);
   const dispatch = useDispatch();
 
   const fetchPokemons = async () => {
@@ -54,8 +57,15 @@ export const PokedexApp = () => {
                     <Loading />
                   ) : (
                     <>
+                    <InfiniteScroll
+                      dataLength={pokemones.length}
+                      next={fetchPokemons}
+                      hasMore={true}
+                      loader={<h4>Loading...</h4>}
+                    >
                       <PokemonsPage />
-                      <div className='container'>
+                    </InfiniteScroll>
+                      {/* <div className='container'>
                         <div className='row'>
                           <div className='col-12 text-center'>
                             <button
@@ -66,7 +76,7 @@ export const PokedexApp = () => {
                             </button>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </>
                   )}
                 </div>

@@ -5,6 +5,7 @@
 html, body {
     height: 100vh;
     width: 100vw;
+    font-family: Helvetica, sans-serif;
 }
 .backgroundPokemons {
     background-image: linear-gradient(to bottom, #f2f4ff, #f4f6ff, #f6f8ff, #f9faff, #fbfcff);
@@ -20,7 +21,6 @@ html, body {
 }
 
 .btn-logout{
-    // padding: 20px 0px;
     background-color: rgba(255, 255, 255, 0.2);
     border: 0px;
     width: 100%;
@@ -34,20 +34,6 @@ html, body {
     color: rgba(255, 255, 255, 0.8);    
 }
 
-.inputSearch{
-    border-radius: 100px;
-    z-index: 0;
-    padding: 5px 20px;
-    border-width: 0px;
-}
-
-.btnSearch{
-    border-radius: 50px;
-    // position: absolute;
-    right: 30px;
-    background-color: $purple;
-    z-index: 999;
-}
 .badge{
     margin-right: 5px;
     border-radius: 10px;
@@ -99,3 +85,30 @@ html, body {
     height: calc(100vh - 55px);
   }
   
+
+  .searchbar{
+    background-color: white;
+    border-radius: 50px;
+    padding: 0px 0px 0px 15px;
+    }
+
+    .search_input{
+    color: black;
+    border: 0;
+    outline: 0;
+    background: none;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $purple;
+    text-decoration:none;
+    }

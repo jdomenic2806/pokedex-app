@@ -5,6 +5,7 @@ import { Loading } from "../components/Loading";
 import { PokemonCard } from "../components/PokemonCard";
 import { PokemonInfoCard } from "../components/PokemonInfoCard";
 import { useHistory } from "react-router-dom";
+import { NotFound } from "../components/NotFound";
 
 export const DetailsPokemonPage = () => {
   let { name } = useParams();
@@ -34,7 +35,7 @@ export const DetailsPokemonPage = () => {
           <div className="row">
             <div className="col-12">
               <button
-              style={{ marginTop: '-60px' }}
+                style={{ marginTop: "-60px" }}
                 className="btn btn-back btn-small mb-5"
                 onClick={() => history.push("/")}
               >
@@ -42,14 +43,18 @@ export const DetailsPokemonPage = () => {
               </button>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-              <PokemonCard pokemon={pokemon} />
+          {pokemon ? (
+            <div className="row">
+              <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                <PokemonCard pokemon={pokemon} />
+              </div>
+              <div className="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+                <PokemonInfoCard pokemon={pokemon} />
+              </div>
             </div>
-            <div className="col-lg-9 col-md-8 col-sm-12 col-xs-12">
-              <PokemonInfoCard pokemon={pokemon} />
-            </div>
-          </div>
+          ) : (
+            <NotFound />
+          )}
         </>
       )}
     </div>

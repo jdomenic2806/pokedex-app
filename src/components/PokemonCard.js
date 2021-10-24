@@ -44,7 +44,7 @@ export const PokemonCard = (props) => {
               </h5>
             </div>
           )}
-          <div class="text-center">
+          <div className="text-center">
           <LazyLoadImage
             className="text-center"
             visibleByDefault={false}
