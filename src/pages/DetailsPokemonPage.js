@@ -18,7 +18,6 @@ export const DetailsPokemonPage = () => {
       const data = await searchPokemon(name);
       setPokemon(data);
       setLoading(false);
-      console.log("data ", data);
     } catch (error) {}
   };
 
@@ -46,7 +45,7 @@ export const DetailsPokemonPage = () => {
           {pokemon ? (
             <div className="row">
               <div className="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-                <PokemonCard pokemon={pokemon} />
+                <PokemonCard pokemon={pokemon} key={pokemon.id} />
               </div>
               <div className="col-lg-9 col-md-8 col-sm-12 col-xs-12">
                 <PokemonInfoCard pokemon={pokemon} />

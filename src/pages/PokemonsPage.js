@@ -8,8 +8,8 @@ export const PokemonsPage = () => {
     <>
       <div className='container-fluid'>
         <div className='row d-flex justify-content-center'>
-          {pokemones.map((pokemon) => (
-            <PokemonCard pokemon={pokemon} />
+          {pokemones.map((pokemon, index) => (
+            <PokemonCard pokemon={pokemon} key={index} />
           ))}
         </div>
       </div>

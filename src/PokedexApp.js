@@ -14,7 +14,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export const PokedexApp = () => {
   const [loading, setLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(
-    'https://pokeapi.co/api/v2/pokemon?limit=21'
+    'https://pokeapi.co/api/v2/pokemon?limit=500'
   );
   const pokemones = useSelector((state) => state.pokemones.pokemones);
   const dispatch = useDispatch();
@@ -65,18 +65,6 @@ export const PokedexApp = () => {
                     >
                       <PokemonsPage />
                     </InfiniteScroll>
-                      {/* <div className='container'>
-                        <div className='row'>
-                          <div className='col-12 text-center'>
-                            <button
-                              className='btn btn-lg btnLoadMore'
-                              onClick={() => fetchPokemons()}
-                            >
-                              Load More
-                            </button>
-                          </div>
-                        </div>
-                      </div> */}
                     </>
                   )}
                 </div>
